@@ -56,7 +56,11 @@ public class Account {
 	
 	public void withdraw(Double amount) throws WithoutBalanceException {
 		if (amount > withdrawLimit) {
-			throw new WithoutBalanceException("there is no balance in the account");
+			throw new WithoutBalanceException("The amount exceeds withdraw limit");
+		}
+		
+		if (balance < amount) {
+			throw new WithoutBalanceException("Not enough balance");
 		}
 		
 		balance -= amount;
